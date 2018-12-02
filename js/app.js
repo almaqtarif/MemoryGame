@@ -10,6 +10,17 @@ const cards = ['fa-diamond', 'fa-diamond',
 			  'fa-bicycle', 'fa-bicycle',
 			  'fa-bomb', 'fa-bomb',
 			  ];
+// game number of moves
+let moves, movesCounter, totalPairs;
+// game timer
+let second = 0, minute = 0;
+const timer = document.querySelector(".timer");
+// congradulation modal
+let modal = document.querySelector(".modal");
+let closeicon = document.querySelector(".close-button");
+// staring variables 
+let stars = document.querySelectorAll(".stars li");
+let starRate = 3;
 /*
  * Display the cards on the page
  *   - shuffle the list of cards using the provided "shuffle" method below
@@ -89,6 +100,21 @@ function initMemoryGame() {
 							openCards=[];
 
 						}
+						//hide the two cards if they don't match
+						else {
+
+							setTimeout(function() {
+
+								openCards.forEach(function(card){
+
+								card.classList.remove('open', 'show');
+
+							    });
+
+							    openCards=[];
+
+							}, 1000);
+					     }
 					}			
 
 				}//end if clicked card is not match or open or shown			
