@@ -97,6 +97,24 @@ function countMoves() {
 	hour = 0;
 	startTimer();
 	}
+	// setting rates based on moves
+    if (moves > 8 && moves < 12) {
+        for( i= 0; i < 3; i++) {
+            if(i > 1){
+                stars[i].style.visibility = "collapse";
+            }
+        starRate =2;
+        }
+    }
+    else if (moves > 13) {
+        for( i= 0; i < 3; i++){
+            if(i > 0){
+                stars[i].style.visibility = "collapse";
+            }
+
+        starRate =1;
+        }
+    }
 } 
 /**
 * @description Initialize the Memory Game 
