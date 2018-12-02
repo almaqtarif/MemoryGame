@@ -2,11 +2,13 @@ html {
     box-sizing: border-box;
 }
 
+
 *,
 *::before,
 *::after {
     box-sizing: inherit;
 }
+
 
 html,
 body {
@@ -16,10 +18,12 @@ body {
     padding: 0;
 }
 
+
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    background: #fff url("../img/geometry2.png"); /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
 }
+
 
 .container {
     display: flex;
@@ -28,15 +32,15 @@ body {
     flex-direction: column;
 }
 
+
 h1 {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+    font: 300 2em/100% Arial, Helvetica, sans-serif;
 }
+
 
 /*
  * Styles for the deck of cards
  */
-
 .deck {
     width: 660px;
     min-height: 680px;
@@ -51,12 +55,13 @@ h1 {
     margin: 0 0 3em;
 }
 
+
 .deck .card {
     height: 125px;
     width: 125px;
-    background: #2e3d49;
+    background: #344;
     font-size: 0;
-    color: #ffffff;
+    color: #fff;
     border-radius: 8px;
     cursor: pointer;
     display: flex;
@@ -65,45 +70,177 @@ h1 {
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
+
+/* TODO: open card  */
 .deck .card.open {
     transform: rotateY(0);
-    background: #02b3e4;
+    background: #0bd;
     cursor: default;
 }
 
 .deck .card.show {
     font-size: 33px;
 }
-
+/* TODO: style match cards  */
 .deck .card.match {
     cursor: default;
-    background: #02ccba;
+    background: #0cb; 
     font-size: 33px;
 }
 
+
 /*
  * Styles for the Score Panel
- */
-
+*/
 .score-panel {
     text-align: left;
     width: 345px;
     margin-bottom: 10px;
 }
 
+
+.timer{
+    padding-left: 10px;
+}
+
+
 .score-panel .stars {
-    margin: 0;
     padding: 0;
     display: inline-block;
     margin: 0 5px 0 0;
 }
+
 
 .score-panel .stars li {
     list-style: none;
     display: inline-block;
 }
 
+
 .score-panel .restart {
     float: right;
     cursor: pointer;
+    background: none;
+    border: none;
 }
+
+
+/*
+ * Styles for the Modal Panel
+*/
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;
+}
+
+
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 1rem 1.5rem;
+    width: 40rem;
+    height: 25rem;
+    border-radius: 0.5rem;
+    text-align: center;
+}
+
+
+.close-button {
+    float: right;
+    width: 1.5rem;
+    line-height: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    background-color: lightgray;
+}
+
+
+.close-button:hover {
+    background-color: darkgray;
+}
+
+
+/* TODO: close modal  */
+.show-modal {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1.0);
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;
+}
+
+
+.fa-check {
+    color: #0c9;
+    padding-top: 30px;
+}
+
+
+/* style for reset button in modal */
+.reset {
+    border-radius: 10px;
+    color: #fff;
+    background-color: #0c9;
+    padding: 10px;
+    border: none;
+}
+
+
+/*
+ * Styles for medium and small devices
+*/
+@media screen and (min-width: 500px) and (max-width: 680px) {
+    /* make game smaller for medium devices */   
+    h1 {
+        font-size: 30px;
+    }
+
+
+    .deck {
+    width: 500px;
+    min-height: 600px;
+    }
+
+
+    .deck .card {
+    width: 100px;
+    height: 100px;
+    }
+
+
+    .modal-content {
+    width: 30rem;
+
+    }
+}
+
+
+@media screen and (max-width: 499px) {
+    /* make game smaller for small devices */
+    .deck {
+        width: 350px;
+        min-height: 500px;
+    }
+
+
+    .deck .card {
+        width: 65px;
+        height: 65px;
+    }
+
+
+    .modal-content {
+        width: 20rem;
+    }
+  }
