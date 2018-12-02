@@ -1,6 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
+// cards icon classes
 const cards = ['fa-diamond', 'fa-diamond',
 			  'fa-paper-plane-o', 'fa-paper-plane-o',
 			  'fa-anchor', 'fa-anchor',
@@ -27,7 +28,6 @@ let starRate = 3;
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
-
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -60,16 +60,6 @@ function startTimer() {
         }
     },1000);
 }
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
 /**
 * @description Generate each card programaticly for the game
 * @param {string} card - the class of the icon card
@@ -127,7 +117,38 @@ function congradulation() {
 	modal.classList.toggle("show-modal");
 	document.querySelector(".finalMove").innerHTML = `With ${moves} Moves and ${starRate} Stars in ${minute} Minutes and ${second} seconds`;
 	//closeicon on modal
+    closeModal();
 }
+/**
+* @description Close Modal when user is winner and start a new game
+*/
+// TODO: close modal and start a game 
+function closeModal() {
+	
+    closeicon.addEventListener("click", function(e) {
+    modal.classList.remove("show-modal");
+    startGame();
+    });
+}
+/**
+* @description Reset Game when click reset button
+*/
+// TODO: reset a game
+function resetGame() {
+
+	modal.classList.remove("show-modal");
+    startGame();
+}
+/*
+ * set up the event listener for a card. If a card is clicked:
+ *  - display the card's symbol (put this functionality in another function that you call from this one)
+ *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
+ *  - if the list already has another card, check to see if the two cards match
+ *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
+ *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
+ *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
+ *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+ */
 /**
 * @description Initialize the Memory Game 
 */
@@ -188,13 +209,13 @@ function initMemoryGame() {
 							    openCards=[];
 
 							}, 1000);
-							countMoves();
 					     }
-					    //show congradulation message
-						if(totalPairs===8){
-							congradulation();
-					    }	
-					}			
+					    countMoves();
+					}
+					//show congradulation message
+					if(totalPairs===8){
+						congradulation();
+				    }			
 
 				}//end if clicked card is not match or open or shown			
 		});//end listner
