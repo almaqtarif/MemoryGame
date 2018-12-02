@@ -117,6 +117,18 @@ function countMoves() {
     }
 } 
 /**
+* @description Congradulation when user wins the game a modal will appear with time scores and number of moves done
+*/
+// TODO: Add congradulation modal with number of moves, star rate, and time of playing 
+function congradulation() {
+	//stop timer
+	clearInterval(interval); 
+	//modal is shown with some information
+	modal.classList.toggle("show-modal");
+	document.querySelector(".finalMove").innerHTML = `With ${moves} Moves and ${starRate} Stars in ${minute} Minutes and ${second} seconds`;
+	//closeicon on modal
+}
+/**
 * @description Initialize the Memory Game 
 */
 // TODO: initialize variables of the game 
@@ -178,6 +190,10 @@ function initMemoryGame() {
 							}, 1000);
 							countMoves();
 					     }
+					    //show congradulation message
+						if(totalPairs===8){
+							congradulation();
+					    }	
 					}			
 
 				}//end if clicked card is not match or open or shown			
