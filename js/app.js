@@ -42,8 +42,24 @@ function shuffle(array) {
 
     return array;
 }
-
-
+/**
+* @description start a timer when first move is done 
+*/
+// TODO: add a timer for the game
+function startTimer() {
+    interval = setInterval(function() {
+    timer.innerHTML = minute+" Mins "+ second+" Secs";
+    second ++;
+        if(second == 60) {
+            minute++;
+            second = 0;
+        }
+        if(minute == 60) {
+            hour++;
+            minute = 0;
+        }
+    },1000);
+}
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
@@ -54,6 +70,34 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+/**
+* @description Generate each card programaticly for the game
+* @param {string} card - the class of the icon card
+* @returns {string} html card template
+*/
+// TODO: add every card to the game programaticly
+function generateCard(card) {
+
+	return `<li class="card"><i class="fa ${card}"></i></li>`;
+
+}
+/**
+* @description Count Moves of the play , start the game time , and specify the stars for the game
+*/
+// TODO: Count moves of the player to specify the star rating 
+function countMoves() {
+
+	moves += 1;
+	movesCounter.innerHTML = moves;
+
+	//start timer with first move  
+	if(moves == 1) {
+	second = 0;
+	minute = 0; 
+	hour = 0;
+	startTimer();
+	}
+} 
 /**
 * @description Initialize the Memory Game 
 */
@@ -114,6 +158,7 @@ function initMemoryGame() {
 							    openCards=[];
 
 							}, 1000);
+							countMoves();
 					     }
 					}			
 
