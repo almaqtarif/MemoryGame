@@ -14,7 +14,7 @@ const cards = ['fa-diamond', 'fa-diamond',
 // game number of moves
 let moves, movesCounter, totalPairs;
 // game timer
-let second = 0, minute = 0;
+let second, minute, interval;
 const timer = document.querySelector(".timer");
 // congradulation modal
 let modal = document.querySelector(".modal");
@@ -124,7 +124,8 @@ function congradulation() {
 */
 // TODO: close modal and start a game 
 function closeModal() {
-	
+	second = 0;
+	minute =0;
     closeicon.addEventListener("click", function(e) {
     modal.classList.remove("show-modal");
     startGame();
@@ -164,6 +165,10 @@ function initMemoryGame() {
 	moves = 0;
 	totalPairs = 0;
 	movesCounter.innerHTML = moves;
+	minute =0; 
+	second =0;
+	clearInterval(interval); 
+	timer.innerHTML = minute+" Mins "+ second+" Secs";
 	// TODO: shuffle all cards depending on their icon classes
 	deck.innerHTML = shuffle(cardHtml).join('');
 
@@ -185,7 +190,7 @@ function initMemoryGame() {
 					openCards.push(card);
 					card.classList.add('open', 'show');					
 					if(openCards.length == 2){
-
+						console.log("enters here");
 						//compare the two cards if they are match
 						if(openCards[0].firstElementChild.className === openCards[1].firstElementChild.className){
 

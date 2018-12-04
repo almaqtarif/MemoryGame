@@ -5,13 +5,30 @@
 * [Instructions](#instructions)
 * [Contributing](#contributing)
 
+
 ## Instructions
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
 
-To get started, open `js/app.js` and start building out the app's functionality
+### Project Overview 
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+Memory card is a game has sixteen cards shuffled randomly with eight pair cards. You have to choose two cards each time so they should the same.
+
+If choosen cards are the same , they will remain open . If not the will be again closed.
+
+Once you begin your game with first move a time will be counted . You will get from one to three stars depending on your number of moves.
+
+### Download Game 
+
+If you are interested to play this game you can download this game from this github link <a href="https://github.com/almaqtarif/MemoryGame">Memory Game</a>
+
+### Project Overview 
+
+
+
+### Dependencies
+
+* [Font Awesome](link to font awesome website).
+* [Google Fonts](link to Google fonts website).
 
 ## Contributing
 
